@@ -153,7 +153,7 @@ for module_name in ALL_MODULES:
 
 
 # do not async
-def send_help(chat_id, text, keyboard=None):
+def seeeend_help(chat_id, text, keyboard=None):
     if not keyboard:
         keyboard = InlineKeyboardMarkup(paginate_modules(0, HELPABLE, "help"))
     dispatcher.bot.send_message(
@@ -174,7 +174,7 @@ def test(update: Update, context: CallbackContext):
 
 
 @run_async
-def start(update: Update, context: CallbackContext):
+def stttttttaaaaarart(update: Update, context: CallbackContext):
     args = context.args
     uptime = get_readable_time((time.time() - StartTime))
     if update.effective_chat.type == "private":
@@ -280,7 +280,7 @@ def error_callback(update: Update, context: CallbackContext):
 
 
 @run_async
-def help_button(update, context):
+def hellp_button(update, context):
     query = update.callback_query
     mod_match = re.match(r"help_module\((.+?)\)", query.data)
     prev_match = re.match(r"help_prev\((.+?)\)", query.data)
@@ -406,7 +406,7 @@ def Source_about_callback(update, context):
         )
 
 @run_async
-def get_help(update: Update, context: CallbackContext):
+def geeet_help(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     args = update.effective_message.text.split(None, 1)
 
