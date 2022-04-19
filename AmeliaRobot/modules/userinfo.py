@@ -118,7 +118,7 @@ def make_bar(per):
 
 
 @run_async
-def get_id(update: Update, context: CallbackContext):
+def geeeet_id(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
     chat = update.effective_chat
@@ -211,7 +211,7 @@ def gifid(update: Update, context: CallbackContext):
 
 
 @run_async
-def info(update: Update, context: CallbackContext):
+def iiiiiiiiinfo(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     message = update.effective_message
     chat = update.effective_chat
@@ -421,7 +421,7 @@ def set_about_me(update: Update, context: CallbackContext):
 
 @run_async
 @sudo_plus
-def stats(update: Update, context: CallbackContext):
+def ssssstats(update: Update, context: CallbackContext):
     stats = "<b>📊 Current stats:</b>\n" + "\n".join([mod.__stats__() for mod in STATS])
     result = re.sub(r"(\d+)", r"<code>\1</code>", stats)
     update.effective_message.reply_text(result, parse_mode=ParseMode.HTML)
