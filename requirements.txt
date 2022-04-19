@@ -39,6 +39,8 @@ odmantic
 bs4
 pytz
 envparse
+spamwatch
+PyYAML
 
 
 motor
