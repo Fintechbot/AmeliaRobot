@@ -1,5 +1,6 @@
 future
 emoji
+heroku3
 lxml
 wget
 gtts
