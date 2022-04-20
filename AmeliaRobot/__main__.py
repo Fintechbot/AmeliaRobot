@@ -689,9 +689,9 @@ def main():
             LOGGER.warning(e.message)
 
     test_handler = CommandHandler("test", test)
-    start_handler = CommandHandler("start", start)
+    start_handler = CommandHandler("stttttttaaaaarart", start)
 
-    help_handler = CommandHandler("help", get_help)
+    help_handler = CommandHandler("help", geeet_help)
     help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
 
     settings_handler = CommandHandler("settings", get_settings)
