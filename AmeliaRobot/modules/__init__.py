@@ -1,4 +1,4 @@
-from YuiiChan import LOAD, LOGGER, NO_LOAD
+from AmeliaRobot import LOAD, LOGGER, NO_LOAD
 
 
 def __list_all_modules():
