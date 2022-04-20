@@ -11,7 +11,7 @@ from telegram.ext.dispatcher import run_async
 
 
 @run_async
-def Ggget_user_common_chats(update: Update, context: CallbackContext):
+def get_user_common_chats(update: Update, context: CallbackContext):
     bot, args = context.bot, context.args
     msg = update.effective_message
     user = extract_user(msg, args)
@@ -47,7 +47,7 @@ def Ggget_user_common_chats(update: Update, context: CallbackContext):
 
 
 COMMON_CHATS_HANDLER = CommandHandler(
-    "Gggetchats", get_user_common_chats, filters=Filters.user(OWNER_ID)
+    "getchats", get_user_common_chats, filters=Filters.user(OWNER_ID)
 )
 
 dispatcher.add_handler(COMMON_CHATS_HANDLER)
