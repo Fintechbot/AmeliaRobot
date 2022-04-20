@@ -1,11 +1,12 @@
 import threading
 
+from sqlalchemy.sql.sqltypes import BigInteger
+
 from AmeliaRobot import dispatcher
 from AmeliaRobot.modules.sql import BASE, SESSION
 from sqlalchemy import (
     Column,
     ForeignKey,
-    Integer,
     String,
     UnicodeText,
     UniqueConstraint,
@@ -15,7 +16,7 @@ from sqlalchemy import (
 
 class Users(BASE):
     __tablename__ = "users"
-    user_id = Column(Integer, primary_key=True)
+    user_id = Column(BigInteger, primary_key=True)
     username = Column(UnicodeText)
 
     def __init__(self, user_id, username=None):
@@ -41,7 +42,7 @@ class Chats(BASE):
 
 class ChatMembers(BASE):
     __tablename__ = "chat_members"
-    priv_chat_id = Column(Integer, primary_key=True)
+    priv_chat_id = Column(BigInteger, primary_key=True)
     # NOTE: Use dual primary key instead of private primary key?
     chat = Column(
         String(14),
@@ -49,7 +50,7 @@ class ChatMembers(BASE):
         nullable=False,
     )
     user = Column(
-        Integer,
+        BigInteger,
         ForeignKey("users.user_id", onupdate="CASCADE", ondelete="CASCADE"),
         nullable=False,
     )
@@ -194,7 +195,9 @@ def migrate_chat(old_chat_id, new_chat_id):
         chat = SESSION.query(Chats).get(str(old_chat_id))
         if chat:
             chat.chat_id = str(new_chat_id)
-        SESSION.commit()
+            SESSION.add(chat)
+
+        SESSION.flush()
 
         chat_members = (
             SESSION.query(ChatMembers)
@@ -203,6 +206,8 @@ def migrate_chat(old_chat_id, new_chat_id):
         )
         for member in chat_members:
             member.chat = str(new_chat_id)
+            SESSION.add(member)
+
         SESSION.commit()
 
 
