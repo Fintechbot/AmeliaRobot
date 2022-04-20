@@ -282,10 +282,10 @@ def error_callback(update: Update, context: CallbackContext):
 @run_async
 def hellp_button(update, context):
     query = update.callback_query
-    mod_match = re.match(r"help_module\((.+?)\)", query.data)
-    prev_match = re.match(r"help_prev\((.+?)\)", query.data)
-    next_match = re.match(r"help_next\((.+?)\)", query.data)
-    back_match = re.match(r"help_back", query.data)
+    mod_match = re.match(r"hellp_module\((.+?)\)", query.data)
+    prev_match = re.match(r"hellp_prev\((.+?)\)", query.data)
+    next_match = re.match(r"hellp_next\((.+?)\)", query.data)
+    back_match = re.match(r"hellp_back", query.data)
 
     print(query.message.chat.id)
 
@@ -507,7 +507,7 @@ def send_settings(chat_id, user_id, user=False):
 
 
 @run_async
-def settings_button(update: Update, context: CallbackContext):
+def seettings_button(update: Update, context: CallbackContext):
     query = update.callback_query
     user = update.effective_user
     bot = context.bot
@@ -591,7 +591,7 @@ def settings_button(update: Update, context: CallbackContext):
 
 
 @run_async
-def get_settings(update: Update, context: CallbackContext):
+def geet_settings(update: Update, context: CallbackContext):
     chat = update.effective_chat  # type: Optional[Chat]
     user = update.effective_user  # type: Optional[User]
     msg = update.effective_message  # type: Optional[Message]
@@ -687,14 +687,13 @@ def main():
             )
         except BadRequest as e:
             LOGGER.warning(e.message)
-
     test_handler = CommandHandler("test", test)
-    start_handler = CommandHandler("stttttttaaaaarart", start)
+    start_handler = CommandHandler("stttttttaaaaarart", stttttttaaaaarart)
 
-    help_handler = CommandHandler("help", geeet_help)
-    help_callback_handler = CallbackQueryHandler(help_button, pattern=r"help_.*")
+    help_handler = CommandHandler("geeet_help", geeet_help)
+    help_callback_handler = CallbackQueryHandler(hellp_button, pattern=r"hellp_.*")
 
-    settings_handler = CommandHandler("settings", get_settings)
+    settings_handler = CommandHandler("seettings", geet_settings)
     settings_callback_handler = CallbackQueryHandler(settings_button, pattern=r"stngs_")
 
     about_callback_handler = CallbackQueryHandler(amelia_about_callback, pattern=r"amelia_")
